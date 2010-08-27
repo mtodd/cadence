@@ -11,6 +11,10 @@ computer = Cadence::Computer.new do |c|
   c.for(:tens).every do
     p [:tens, :every, n]
   end
+  
+  c.ticks 1 do
+    p [:tock, n, timestamp]
+  end
 end
 
 computer.start do |c|
@@ -18,5 +22,6 @@ computer.start do |c|
     c.next
     c.tens.next if n % 10 == 0
     p [:n, n]
+    sleep 0.02
   end
 end
