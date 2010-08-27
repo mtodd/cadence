@@ -1,8 +1,9 @@
 h1. Cadence
 
-Compute the rate and run 
+Track counts and compute rate of iteration. Set up callbacks for various
+intervals such as @every@ n increments or every n @ticks@.
 
-Increment different counters and setup callbacks depending on modulus counts
+h2. Sample
 
 <pre>
 require 'lib/cadence'
@@ -32,3 +33,11 @@ computer.start do |c|
   end
 end
 </pre>
+
+h2. License
+
+MIT
+
+h2. Copyright
+
+Copyright (C) 2010 Matt Todd.
