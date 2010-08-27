@@ -4,16 +4,31 @@ Compute the rate and run
 
 Increment different counters and setup callbacks depending on modulus counts
 
-cadence = Cadence::Computer.new do |c|
-  c.total 500 do |n|
-    p [:total, n]
+<pre>
+require 'lib/cadence'
+
+data = (1..100).to_a
+
+computer = Cadence::Computer.new do |c|
+  c.every 5 do
+    p [:every, 5, n]
+  end
+  
+  c.for(:tens).every do
+    p [:tens, :every, n]
+  end
+  
+  c.ticks 1 do
+    p [:tock, n, timestamp]
   end
 end
 
 computer.start do |c|
-  loop do
-    c.next # actual total
-    c.incr(:total) # column
-    c.total.next   # alternative
+  data.each do |n|
+    c.next
+    c.tens.next if n % 10 == 0
+    p [:n, n]
+    sleep 0.02
   end
 end
+</pre>
