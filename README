@@ -1,0 +1,19 @@
+h1. Cadence
+
+Compute the rate and run 
+
+Increment different counters and setup callbacks depending on modulus counts
+
+cadence = Cadence::Computer.new do |c|
+  c.total 500 do |n|
+    p [:total, n]
+  end
+end
+
+computer.start do |c|
+  loop do
+    c.next # actual total
+    c.incr(:total) # column
+    c.total.next   # alternative
+  end
+end
